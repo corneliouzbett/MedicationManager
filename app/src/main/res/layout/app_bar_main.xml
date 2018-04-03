@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.beliscosolutions.corneliouzbett.med_manager01.MainActivity">
+    tools:context="com.beliscosolutions.corneliouzbett.med_manager01.views.MainActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -24,10 +24,10 @@
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
-        android:layout_width="wrap_content"
+        android:layout_width="38dp"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        android:src="@drawable/ic_fab_add_24dp"/>
 
 </android.support.design.widget.CoordinatorLayout>
