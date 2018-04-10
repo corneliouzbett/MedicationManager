@@ -1,5 +1,8 @@
 package com.beliscosolutions.corneliouzbett.medmanager01.views;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -16,7 +19,10 @@ import com.beliscosolutions.corneliouzbett.medmanager01.R;
 import com.beliscosolutions.corneliouzbett.medmanager01.helpers.InputValidation;
 import com.beliscosolutions.corneliouzbett.medmanager01.helpers.sql.DatabaseHelper;
 import com.beliscosolutions.corneliouzbett.medmanager01.model.Medication;
+import com.beliscosolutions.corneliouzbett.medmanager01.utils.AlarmReminder;
 import com.beliscosolutions.corneliouzbett.medmanager01.utils.ConversionOfDates;
+import com.beliscosolutions.corneliouzbett.medmanager01.utils.MedicationBroadCastReceiver;
+import com.beliscosolutions.corneliouzbett.medmanager01.utils.Notifications;
 import com.savvi.rangedatepicker.CalendarPickerView;
 
 import java.util.Calendar;
@@ -36,6 +42,7 @@ public class MedicationCreationActivity extends AppCompatActivity {
     private TextInputLayout medicationDescriptionTextInputLayout;
     private TextInputLayout medicationIntervalTextInputLayout;
 
+    final static int RQS_1 = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,11 +101,16 @@ public class MedicationCreationActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(),"Error Occured",Toast.LENGTH_LONG).show();
                             break;
                         default:
-/*                            Notifications.createNotification(getApplicationContext(),
-                                    "Med-Manager",
-                                    medicationDescriptionTextInputEditText.getText().toString().trim(),
-                                    medicationTitleTextInputEditText.getText().toString().trim(),
-                                    R.drawable.ic_checked);*/
+
+                            Calendar calendar = Calendar.getInstance();
+                            calendar.set(Calendar.HOUR_OF_DAY, 4);
+                            calendar.set(Calendar.MINUTE, 28);
+                            calendar.set(Calendar.SECOND, 0);
+                            calendar.set(Calendar.MILLISECOND, 0);
+                            calendar.set(Calendar.AM_PM, Calendar.PM);
+
+                            setAlarm(calendar,
+                                    medicationTitleTextInputEditText.getText().toString().trim());
 
                             Toast.makeText(getApplicationContext(),"Success",Toast.LENGTH_LONG).show();
                             Intent mainIntent = new Intent(MedicationCreationActivity.this,MainActivity.class);
@@ -119,6 +131,16 @@ public class MedicationCreationActivity extends AppCompatActivity {
         if (item.getItemId()== android.R.id.home)
             finish();
         return super.onOptionsItemSelected(item);
+    }
+
+    private void setAlarm(Calendar targetCal,String body){
+
+        Intent intent = new Intent(getBaseContext(), MedicationBroadCastReceiver.class);
+        intent.putExtra("body",body);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getBaseContext(), RQS_1, intent, 0);
+        AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, targetCal.getTimeInMillis(),1000 * 60 * 2, pendingIntent);
+
     }
 
 }

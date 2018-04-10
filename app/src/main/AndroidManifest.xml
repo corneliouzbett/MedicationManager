@@ -35,7 +35,7 @@
         <activity android:name="com.beliscosolutions.corneliouzbett.medmanager01.views.MedicationCreationActivity" />
         <activity android:name="com.beliscosolutions.corneliouzbett.medmanager01.views.MedicationDetailsActivity" />
 
-        <service android:name="com.beliscosolutions.corneliouzbett.medmanager01.utils.AlarmReminder" />
+        <receiver android:name=".utils.MedicationBroadCastReceiver"/>
 
         <activity android:name="com.beliscosolutions.corneliouzbett.medmanager01.views.CategorizeByMonth" />
         <activity android:name="com.beliscosolutions.corneliouzbett.medmanager01.views.MonthDetailedActivity"></activity>

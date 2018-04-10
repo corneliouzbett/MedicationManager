@@ -17,6 +17,8 @@ public class Notifications {
                 .setContentTitle(title)
                 .setContentText(body)
                 .setContentTitle(subject)
+                .setDefaults(Notification.DEFAULT_SOUND)
+                .setDefaults(Notification.DEFAULT_VIBRATE)
                 .setSmallIcon(drawable)
                 .build();
 
