@@ -53,7 +53,7 @@ public class MedicationCreationActivity extends AppCompatActivity {
         medicationTitleTextInputEditText = findViewById(R.id.text_input_editText_medication_name);
         medicationDescriptionTextInputEditText = findViewById(R.id.text_input_editText_medication_description);
         medicationIntervalTextInputEditText = findViewById(R.id.text_input_editText_medication_interval);
-        calendarView = (CalendarPickerView) findViewById(R.id.calendar_view);
+        calendarView = findViewById(R.id.calendar_view);
         submitMedication = findViewById(R.id.button_submit_medication);
         validation = new InputValidation(this);
 
