@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primaryColor">#009688</color>
+    <color name="primaryLightColor">#52c7b8</color>
+    <color name="primaryDarkColor">#00675b</color>
+    <color name="secondaryColor">#00c853</color>
+    <color name="secondaryLightColor">#e7ff8c</color>
+    <color name="secondaryDarkColor">#64dd17</color>
+    <color name="primaryTextColor">#fafafa</color>
+    <color name="secondaryTextColor">#fafafa</color>
+
+    <color name="drak_gray">#616161</color>
+</resources>

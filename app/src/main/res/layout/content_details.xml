@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="15dp">
+
+            <TextView
+                android:id="@+id/detailed_description"
+                android:textSize="14sp"
+                android:textAllCaps="false"
+                android:padding="6dp"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/detailed_interval"
+                android:textSize="14sp"
+                android:textAllCaps="false"
+                android:padding="6dp"
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/detailed_startDate"
+                android:textSize="16sp"
+                android:textAllCaps="false"
+                android:textColor="@color/secondaryColor"
+                android:padding="6dp"
+                android:layout_marginTop="15dp"
+                android:drawableLeft="@drawable/ic_pin"
+                android:drawablePadding="@dimen/fab_margin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/detailed_endDate"
+                android:textSize="16sp"
+                android:textAllCaps="false"
+                android:padding="6dp"
+                android:layout_marginTop="15dp"
+                android:textColor="@color/colorAccent"
+                android:drawableLeft="@drawable/ic_checked"
+                android:drawablePadding="@dimen/fab_margin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <com.savvi.rangedatepicker.CalendarPickerView
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/detailed_calendar_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="12dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="16dp"
+                android:scrollbarStyle="outsideOverlay"
+                android:clipToPadding="false"
+                app:tsquare_dividerColor="@color/calendar_divider"
+                app:tsquare_headerTextColor="@color/primaryDarkColor"
+                />
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>
