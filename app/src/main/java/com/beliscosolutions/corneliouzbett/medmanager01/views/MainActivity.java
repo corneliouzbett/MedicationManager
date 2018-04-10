@@ -93,6 +93,10 @@ public class MainActivity extends AppCompatActivity
         accountEmailTextView = findViewById(R.id.tv_account_email);
         photourlImageView = findViewById(R.id.imageview_photourl);
 
+/**
+ * Mr code, try to behave the next time  or you will remain
+ * comment always.????!!!!!@@@@@@@@
+ */
 
 /*        displayNameTextView.setText(bundle.getString("display_name"));
         accountEmailTextView.setText(bundle.getString("email"));

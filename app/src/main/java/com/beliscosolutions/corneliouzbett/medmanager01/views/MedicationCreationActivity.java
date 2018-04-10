@@ -103,14 +103,15 @@ public class MedicationCreationActivity extends AppCompatActivity {
                         default:
 
                             Calendar calendar = Calendar.getInstance();
-                            calendar.set(Calendar.HOUR_OF_DAY, 4);
-                            calendar.set(Calendar.MINUTE, 28);
+                            calendar.set(Calendar.HOUR_OF_DAY, 0);
+                            calendar.set(Calendar.MINUTE, 0);
                             calendar.set(Calendar.SECOND, 0);
                             calendar.set(Calendar.MILLISECOND, 0);
-                            calendar.set(Calendar.AM_PM, Calendar.PM);
+                            calendar.set(Calendar.AM_PM, Calendar.AM);
 
                             setAlarm(calendar,
-                                    medicationTitleTextInputEditText.getText().toString().trim());
+                                    medicationTitleTextInputEditText.getText().toString().trim(),
+                                    Integer.parseInt(medicationIntervalTextInputEditText.getText().toString().trim()) *60*60*1000);
 
                             Toast.makeText(getApplicationContext(),"Success",Toast.LENGTH_LONG).show();
                             Intent mainIntent = new Intent(MedicationCreationActivity.this,MainActivity.class);
@@ -133,13 +134,20 @@ public class MedicationCreationActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void setAlarm(Calendar targetCal,String body){
+    /**
+     *  this is used to set the alarm
+     * @param targetCal
+     * @param body
+     * @param duration_interval
+     */
+
+    private void setAlarm(Calendar targetCal,String body,int duration_interval){
 
         Intent intent = new Intent(getBaseContext(), MedicationBroadCastReceiver.class);
         intent.putExtra("body",body);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(getBaseContext(), RQS_1, intent, 0);
         AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, targetCal.getTimeInMillis(),1000 * 60 * 2, pendingIntent);
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, targetCal.getTimeInMillis(),duration_interval, pendingIntent);
 
     }
 

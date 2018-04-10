@@ -16,12 +16,12 @@ public class MedicationBroadCastReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 
-        Toast.makeText(context, "Reminder received!", Toast.LENGTH_LONG).show();
         Bundle  bundle = intent.getExtras();
         Notifications.createNotification(context,
                 "MED-MANAGER",
-                bundle.getString("body"),
-                "testing my medication manager",
+                "It's Time to take "+bundle.getString("body"),
+                "It is advisable that you take your medication until you finish the " +
+                        "prescribed dose",
                 R.mipmap.ic_launcher);
 
     }

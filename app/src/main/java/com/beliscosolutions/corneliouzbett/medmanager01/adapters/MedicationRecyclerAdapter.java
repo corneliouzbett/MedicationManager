@@ -54,8 +54,8 @@ public class MedicationRecyclerAdapter extends RecyclerView.Adapter<MedicationRe
                 public void onClick(View v) {
                     int position = getAdapterPosition();
 
-                    Toast.makeText(v.getContext(),"Clicked Item"+listMedication.get(position).getName(),
-                            Toast.LENGTH_LONG).show();
+                   /* Toast.makeText(v.getContext(),"Clicked Item"+listMedication.get(position).getName(),
+                            Toast.LENGTH_LONG).show(); */
                     Intent detailsActivityIntent = new Intent(mContext, MedicationDetailsActivity.class);
                     detailsActivityIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     detailsActivityIntent.putExtra("title",listMedication.get(position).getName());
@@ -128,7 +128,7 @@ public class MedicationRecyclerAdapter extends RecyclerView.Adapter<MedicationRe
        if (position % 3 == 0){
            holder.medicineImageView.setImageResource(R.drawable.image_tablets);
        } else if (position % 3 == 1){
-           holder.medicineImageView.setImageResource(R.drawable.image_medicine);
+           holder.medicineImageView.setImageResource(R.drawable.image_pills);
        } else if (position % 3 == 2){
            holder.medicineImageView.setImageResource(R.drawable.image_medicine);
        }
