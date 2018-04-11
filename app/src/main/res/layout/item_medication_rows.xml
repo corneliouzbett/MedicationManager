@@ -10,8 +10,7 @@
             android:id="@+id/civ_medicine"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_margin="10dp"
-            android:src="@drawable/image_tablets"/>
+            android:layout_margin="10dp"/>
 
             <TextView
                 android:id="@+id/tv_name"

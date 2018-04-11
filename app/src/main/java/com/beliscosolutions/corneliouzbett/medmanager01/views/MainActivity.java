@@ -3,11 +3,13 @@ package com.beliscosolutions.corneliouzbett.medmanager01.views;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -26,6 +28,11 @@ import com.beliscosolutions.corneliouzbett.medmanager01.adapters.SimpleDividerIt
 import com.beliscosolutions.corneliouzbett.medmanager01.helpers.sql.DatabaseHelper;
 import com.beliscosolutions.corneliouzbett.medmanager01.model.Medication;
 import com.beliscosolutions.corneliouzbett.medmanager01.model.User;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -42,6 +49,7 @@ public class MainActivity extends AppCompatActivity
     private TextView displayNameTextView;
     private TextView accountEmailTextView;
     private ImageView photourlImageView;
+    private GoogleSignInClient mGoogleSignInClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +58,12 @@ public class MainActivity extends AppCompatActivity
 
         Toolbar toolbar =  findViewById(R.id.anim_toolbar);
         setSupportActionBar(toolbar);
+
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+        // Build a GoogleSignInClient with the options specified by gso.
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -136,8 +150,8 @@ public class MainActivity extends AppCompatActivity
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_search) {
 
-        } else if (id == R.id.action_settings){
-
+        } else if (id == R.id.action_signout){
+            signOut();
         } else if (id == R.id.action_category){
 
             Intent categotyIntent = new Intent(MainActivity.this,CategorizeByMonth.class);
@@ -209,6 +223,17 @@ public class MainActivity extends AppCompatActivity
                 medicationRecyclerAdapter.notifyDataSetChanged();
             }
         }.execute();
+    }
+
+    public void signOut() {
+        mGoogleSignInClient.signOut()
+                .addOnCompleteListener(this, new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        // sign out completed succesfull
+                        Log.i("MainActivity :","Signing Out is completed successfully");
+                    }
+                });
     }
 
 }
