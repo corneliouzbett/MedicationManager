@@ -14,7 +14,7 @@
             android:layout_height="match_parent"
             android:background="#f2f2f2"
             android:layout_margin="15dp">
-            <android.support.v4.widget.CircleImageView
+            <ImageView
                 android:id="@+id/image_profile"
                 android:layout_width="100dp"
                 android:layout_height="100dp"

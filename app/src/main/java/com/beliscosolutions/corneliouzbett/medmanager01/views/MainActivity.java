@@ -1,6 +1,7 @@
 package com.beliscosolutions.corneliouzbett.medmanager01.views;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -21,6 +22,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.beliscosolutions.corneliouzbett.medmanager01.R;
 import com.beliscosolutions.corneliouzbett.medmanager01.adapters.MedicationRecyclerAdapter;
@@ -29,10 +31,12 @@ import com.beliscosolutions.corneliouzbett.medmanager01.helpers.sql.DatabaseHelp
 import com.beliscosolutions.corneliouzbett.medmanager01.model.Medication;
 import com.beliscosolutions.corneliouzbett.medmanager01.model.User;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -50,13 +54,50 @@ public class MainActivity extends AppCompatActivity
     private TextView accountEmailTextView;
     private ImageView photourlImageView;
 
+    private FirebaseAuth mAuth;
+    private static GoogleSignInClient mGoogleSignInClient;
+    public static String displayName;
+    public static String email;
+    public static Uri photouri;
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+
+        if (account == null){
+            Intent loginIntent = new Intent(this,LoginActivity.class);
+            startActivity(loginIntent);
+            finish();
+        }
+        // continue using the app
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        mAuth = FirebaseAuth.getInstance();
+        databaseHelper = new DatabaseHelper(this);
+
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+        // Build a GoogleSignInClient with the options specified by gso.
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+        User user = new User();
+        user.setEmailAddress(account.getEmail());
+        user.setName(account.getDisplayName());
+        user.setPassword(account.getPhotoUrl().toString());
+        databaseHelper.addUser(user);
+
         Toolbar toolbar =  findViewById(R.id.anim_toolbar);
         setSupportActionBar(toolbar);
+
+        //Toast.makeText(this,"info Profile:"+LoginActivity.displayName,Toast.LENGTH_LONG);
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -90,11 +131,8 @@ public class MainActivity extends AppCompatActivity
         medicationRecyclerView.setHasFixedSize(true);
         medicationRecyclerView.addItemDecoration( new SimpleDividerItemDecoration(getApplicationContext()));
         medicationRecyclerView.setAdapter(medicationRecyclerAdapter);
-        databaseHelper = new DatabaseHelper(this);
 
         getDataFromSQLite();
-
-        Bundle bundle = getIntent().getExtras();
 
         displayNameTextView = findViewById(R.id.tv_display_name);
         accountEmailTextView = findViewById(R.id.tv_account_email);
@@ -105,13 +143,14 @@ public class MainActivity extends AppCompatActivity
  * comment always.????!!!!!@@@@@@@@
  */
 
-/*        displayNameTextView.setText(LoginActivity.displayName);
-        accountEmailTextView.setText(LoginActivity.email);
+        displayNameTextView.setText(account.getDisplayName());
+        accountEmailTextView.setText(account.getEmail());
 
-        Picasso.with(this)
+       /* Picasso.with(this)
                 .load(LoginActivity.photouri)
                 .centerCrop()
                 .into(photourlImageView);*/
+
 
     }
 
@@ -144,8 +183,12 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.action_search) {
 
         } else if (id == R.id.action_signout){
-            LoginActivity.signOut(getApplicationContext());
-        } else if (id == R.id.action_category){
+           signOut();
+        } else if (id == R.id.action_update_profile){
+            Intent intent = new Intent(this,UpdateInfoActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        }else if (id == R.id.action_category){
 
             Intent categotyIntent = new Intent(MainActivity.this,CategorizeByMonth.class);
             categotyIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -184,7 +227,11 @@ public class MainActivity extends AppCompatActivity
             Intent mainIntent = new Intent(this,MainActivity.class);
             mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
-        } else if (id == R.id.nav_settings) {
+        } else if (id == R.id.nav_profile) {
+
+            Intent intent = new Intent(this,UpdateInfoActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
 
         }  else if (id == R.id.nav_share) {
 
@@ -218,6 +265,17 @@ public class MainActivity extends AppCompatActivity
                 medicationRecyclerAdapter.notifyDataSetChanged();
             }
         }.execute();
+    }
+
+    private   void signOut() {
+        mGoogleSignInClient.signOut()
+                .addOnCompleteListener(this, new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        // sign out completed succesfull
+                        Log.i("MainActivity :","Signing Out is completed successfully");
+                    }
+                });
     }
 
 }
