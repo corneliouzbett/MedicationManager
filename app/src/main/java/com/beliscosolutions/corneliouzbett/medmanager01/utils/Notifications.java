@@ -2,6 +2,7 @@ package com.beliscosolutions.corneliouzbett.medmanager01.utils;
 
 import android.app.Notification;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 
 /**
@@ -10,7 +11,8 @@ import android.content.Context;
 
 public class Notifications {
 
-    public static void createNotification(Context context, String title, String body, String subject, int drawable){
+    public static void createNotification(Context context, String title, String body, String subject, int drawable,
+                                          PendingIntent pendingIntent){
 
         NotificationManager notif=(NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
         Notification notify = new Notification.Builder(context)
