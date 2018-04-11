@@ -27,6 +27,7 @@ import android.widget.Toast;
 import com.beliscosolutions.corneliouzbett.medmanager01.R;
 import com.beliscosolutions.corneliouzbett.medmanager01.adapters.MedicationRecyclerAdapter;
 import com.beliscosolutions.corneliouzbett.medmanager01.adapters.SimpleDividerItemDecoration;
+import com.beliscosolutions.corneliouzbett.medmanager01.dialogs.AlertDialog;
 import com.beliscosolutions.corneliouzbett.medmanager01.helpers.sql.DatabaseHelper;
 import com.beliscosolutions.corneliouzbett.medmanager01.model.Medication;
 import com.beliscosolutions.corneliouzbett.medmanager01.model.User;
@@ -174,7 +175,13 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_search) {
+        if (id == R.id.action_aboutUs) {
+
+            AlertDialog.create(
+                    "Med-Manager is a simple app that helps patients remember" +
+                            "  to take their medication and provides tracking for the intake of the prescribed medication intake.",
+                    "Med-Manager",this
+            );
 
         } else if (id == R.id.action_signout){
            signOut();

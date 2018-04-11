@@ -16,8 +16,10 @@
             android:layout_margin="15dp">
             <ImageView
                 android:id="@+id/image_profile"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/image_placeholder"
                 android:layout_gravity="center_horizontal"/>
 
             <android.support.design.widget.TextInputLayout
@@ -43,7 +45,7 @@
                     android:id="@+id/text_input_editText_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text"
+                    android:inputType="textEmailAddress"
                     android:hint="Email Address here" />
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
@@ -56,7 +58,7 @@
                     android:id="@+id/text_input_editText_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="number"
+                    android:inputType="textPassword"
                     android:hint="password" />
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
@@ -69,7 +71,7 @@
                     android:id="@+id/text_input_editText_confirmpassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="number"
+                    android:inputType="textPassword"
                     android:hint="confirm password" />
             </android.support.design.widget.TextInputLayout>
 
