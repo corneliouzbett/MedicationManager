@@ -1,6 +1,7 @@
 package com.beliscosolutions.corneliouzbett.medmanager01.views;
 
 import android.app.AlarmManager;
+import android.app.Notification;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
@@ -103,8 +104,8 @@ public class MedicationCreationActivity extends AppCompatActivity {
                         default:
 
                             Calendar calendar = Calendar.getInstance();
-                            calendar.set(Calendar.HOUR_OF_DAY, 0);
-                            calendar.set(Calendar.MINUTE, 0);
+                            calendar.set(Calendar.HOUR_OF_DAY, 11);
+                            calendar.set(Calendar.MINUTE, 5);
                             calendar.set(Calendar.SECOND, 0);
                             calendar.set(Calendar.MILLISECOND, 0);
                             calendar.set(Calendar.AM_PM, Calendar.AM);
@@ -151,4 +152,9 @@ public class MedicationCreationActivity extends AppCompatActivity {
 
     }
 
+/*    private PendingIntent setPendingIntent(Context context, Notification notification){
+        Intent startMedsActivity = new Intent(context,MainActivity.class);
+
+        return PendingIntent.getActivity(context,notification,startMedsActivity,PendingIntent.FLAG_UPDATE_CURRENT);
+    }*/
 }

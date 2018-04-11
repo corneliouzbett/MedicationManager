@@ -128,9 +128,9 @@ public class MedicationRecyclerAdapter extends RecyclerView.Adapter<MedicationRe
        if (position % 3 == 0){
            holder.medicineImageView.setImageResource(R.drawable.image_tablets);
        } else if (position % 3 == 1){
-           holder.medicineImageView.setImageResource(R.drawable.image_pills);
-       } else if (position % 3 == 2){
            holder.medicineImageView.setImageResource(R.drawable.image_medicine);
+       } else if (position % 3 == 2){
+           holder.medicineImageView.setImageResource(R.drawable.image_pills);
        }
 
 
