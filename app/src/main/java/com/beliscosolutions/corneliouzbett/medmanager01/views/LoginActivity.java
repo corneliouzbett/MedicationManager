@@ -1,6 +1,8 @@
 package com.beliscosolutions.corneliouzbett.medmanager01.views;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -21,7 +23,9 @@ public class LoginActivity extends AppCompatActivity {
 
     private static final int RC_SIGN_IN = 1;
     private SignInButton signinwithGoogleButton;
-
+    public static String name;
+    public static String email;
+    public static Uri profile;
 
     final String TAG = "LoginActivity :";
     private FirebaseAuth mAuth;
@@ -58,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
-        if (requestCode == RC_SIGN_IN) {
+        if (requestCode == RC_SIGN_IN && resultCode == Activity.RESULT_OK) {
             // The Task returned from this call is always completed, no need to attach
             // a listener.
             Task <GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
@@ -68,12 +72,19 @@ public class LoginActivity extends AppCompatActivity {
 
     private void handleSignInResult(Task <GoogleSignInAccount> completedTask) {
         try {
-            GoogleSignInAccount account = completedTask.getResult(ApiException.class);
 
-            Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
-            mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(mainIntent);
-            finish();
+            GoogleSignInAccount account = completedTask.getResult(ApiException.class);
+            if(account != null){
+                Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
+                mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                mainIntent.putExtra("name",account.getDisplayName().toString());
+                mainIntent.putExtra("email", account.getEmail().toString());
+                name = account.getDisplayName().toLowerCase().toString();
+                email = account.getEmail().toString().toLowerCase();
+                profile = account.getPhotoUrl();
+                startActivity(mainIntent);
+                finish();
+            }
         } catch (ApiException e) {
             // The ApiException status code indicates the detailed failure reason.
             // Please refer to the GoogleSignInStatusCodes class reference for more information.

@@ -5,8 +5,11 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.beliscosolutions.corneliouzbett.medmanager01.R;
+import com.beliscosolutions.corneliouzbett.medmanager01.helpers.sql.DatabaseHelper;
 
 public class UpdateInfoActivity extends AppCompatActivity {
+
+    private DatabaseHelper helper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

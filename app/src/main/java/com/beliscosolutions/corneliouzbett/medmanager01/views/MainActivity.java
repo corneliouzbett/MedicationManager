@@ -87,12 +87,6 @@ public class MainActivity extends AppCompatActivity
                 .build();
         // Build a GoogleSignInClient with the options specified by gso.
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
-        User user = new User();
-        user.setEmailAddress(account.getEmail());
-        user.setName(account.getDisplayName());
-        user.setPassword(account.getPhotoUrl().toString());
-        databaseHelper.addUser(user);
 
         Toolbar toolbar =  findViewById(R.id.anim_toolbar);
         setSupportActionBar(toolbar);
@@ -143,11 +137,11 @@ public class MainActivity extends AppCompatActivity
  * comment always.????!!!!!@@@@@@@@
  */
 
-        displayNameTextView.setText(account.getDisplayName());
-        accountEmailTextView.setText(account.getEmail());
+/*        displayNameTextView.setText(LoginActivity.name);
+        accountEmailTextView.setText(LoginActivity.email);
 
-       /* Picasso.with(this)
-                .load(LoginActivity.photouri)
+        Picasso.with(this)
+                .load(LoginActivity.profile)
                 .centerCrop()
                 .into(photourlImageView);*/
 
@@ -273,6 +267,9 @@ public class MainActivity extends AppCompatActivity
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         // sign out completed succesfull
+                        Intent loginIntent = new Intent(getApplicationContext(),LoginActivity.class);
+                        startActivity(loginIntent);
+                        finish();
                         Log.i("MainActivity :","Signing Out is completed successfully");
                     }
                 });
