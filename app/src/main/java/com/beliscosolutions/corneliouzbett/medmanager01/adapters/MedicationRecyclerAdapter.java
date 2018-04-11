@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.beliscosolutions.corneliouzbett.medmanager01.R;
 import com.beliscosolutions.corneliouzbett.medmanager01.helpers.sql.DatabaseHelper;
@@ -80,7 +79,7 @@ public class MedicationRecyclerAdapter extends RecyclerView.Adapter<MedicationRe
 
                     alertDialogbuilder.setTitle("Med-Manager Message");
                     alertDialogbuilder
-                            .setMessage("Are you sure you want to delete "+listMedication.get(pos).getName())
+                            .setMessage("Are you sure you want to delete "+listMedication.get(pos).getName().toUpperCase())
                             .setCancelable(false)
                             .setIcon(R.drawable.ic_cancel_delete)
                             .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
@@ -120,8 +119,9 @@ public class MedicationRecyclerAdapter extends RecyclerView.Adapter<MedicationRe
         holder.nameTextView.setText(listMedication.get(position).getName());
         holder.descriptionTextView.setText(listMedication.get(position).getDescription());
 
-      long numberOfDays =  DatesDifferences.getNumberOfDays(ConversionOfDates.getDateFromString(listMedication.get(position).getStart_date()),
-                ConversionOfDates.getDateFromString(listMedication.get(position).getEnd_date()));
+      long numberOfDays =  DatesDifferences.getNumberOfDays(
+              ConversionOfDates.getDateFromString(listMedication.get(position).getStart_date()),
+              ConversionOfDates.getDateFromString(listMedication.get(position).getEnd_date()));
 
         holder.startDateTextView.setText( String.valueOf(numberOfDays) +" Days remaining");
 
