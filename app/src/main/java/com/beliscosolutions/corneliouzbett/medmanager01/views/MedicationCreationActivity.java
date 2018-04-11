@@ -102,15 +102,7 @@ public class MedicationCreationActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(),"Error Occured",Toast.LENGTH_LONG).show();
                             break;
                         default:
-
-                            Calendar calendar = Calendar.getInstance();
-                            calendar.set(Calendar.HOUR_OF_DAY, 11);
-                            calendar.set(Calendar.MINUTE, 5);
-                            calendar.set(Calendar.SECOND, 0);
-                            calendar.set(Calendar.MILLISECOND, 0);
-                            calendar.set(Calendar.AM_PM, Calendar.AM);
-
-                            setAlarm(calendar,
+                            setAlarm(
                                     medicationTitleTextInputEditText.getText().toString().trim(),
                                     Integer.parseInt(medicationIntervalTextInputEditText.getText().toString().trim()) *60*60*1000);
 
@@ -137,24 +129,17 @@ public class MedicationCreationActivity extends AppCompatActivity {
 
     /**
      *  this is used to set the alarm
-     * @param targetCal
      * @param body
      * @param duration_interval
      */
 
-    private void setAlarm(Calendar targetCal,String body,int duration_interval){
+    private void setAlarm(String body,int duration_interval){
 
         Intent intent = new Intent(getBaseContext(), MedicationBroadCastReceiver.class);
         intent.putExtra("body",body);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(getBaseContext(), RQS_1, intent, 0);
         AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, targetCal.getTimeInMillis(),duration_interval, pendingIntent);
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, Calendar.getInstance().getTimeInMillis(),duration_interval, pendingIntent);
 
     }
-
-/*    private PendingIntent setPendingIntent(Context context, Notification notification){
-        Intent startMedsActivity = new Intent(context,MainActivity.class);
-
-        return PendingIntent.getActivity(context,notification,startMedsActivity,PendingIntent.FLAG_UPDATE_CURRENT);
-    }*/
 }

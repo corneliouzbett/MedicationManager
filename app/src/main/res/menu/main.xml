@@ -13,10 +13,10 @@
         android:icon="@drawable/ic_sort_category"
         android:orderInCategory="100"
         app:showAsAction="always" />
-<!--    <item android:id="@+id/action_settings"
-        android:title="@string/action_settings"
+    <item android:id="@+id/action_update_profile"
+        android:title="Update profile"
         android:orderInCategory="100"
-        app:showAsAction="never" />-->
+        app:showAsAction="never" />
     <item android:id="@+id/action_aboutUs"
         android:title="@string/action_aboutus"
         android:orderInCategory="100"

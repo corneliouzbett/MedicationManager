@@ -49,7 +49,6 @@ public class MainActivity extends AppCompatActivity
     private TextView displayNameTextView;
     private TextView accountEmailTextView;
     private ImageView photourlImageView;
-    private GoogleSignInClient mGoogleSignInClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,12 +57,6 @@ public class MainActivity extends AppCompatActivity
 
         Toolbar toolbar =  findViewById(R.id.anim_toolbar);
         setSupportActionBar(toolbar);
-
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestEmail()
-                .build();
-        // Build a GoogleSignInClient with the options specified by gso.
-        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -112,11 +105,11 @@ public class MainActivity extends AppCompatActivity
  * comment always.????!!!!!@@@@@@@@
  */
 
-/*        displayNameTextView.setText(bundle.getString("display_name"));
-        accountEmailTextView.setText(bundle.getString("email"));
+/*        displayNameTextView.setText(LoginActivity.displayName);
+        accountEmailTextView.setText(LoginActivity.email);
 
         Picasso.with(this)
-                .load(bundle.getString("photo_url"))
+                .load(LoginActivity.photouri)
                 .centerCrop()
                 .into(photourlImageView);*/
 
@@ -151,7 +144,7 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.action_search) {
 
         } else if (id == R.id.action_signout){
-            signOut();
+            LoginActivity.signOut(getApplicationContext());
         } else if (id == R.id.action_category){
 
             Intent categotyIntent = new Intent(MainActivity.this,CategorizeByMonth.class);
@@ -223,17 +216,6 @@ public class MainActivity extends AppCompatActivity
                 medicationRecyclerAdapter.notifyDataSetChanged();
             }
         }.execute();
-    }
-
-    public void signOut() {
-        mGoogleSignInClient.signOut()
-                .addOnCompleteListener(this, new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        // sign out completed succesfull
-                        Log.i("MainActivity :","Signing Out is completed successfully");
-                    }
-                });
     }
 
 }

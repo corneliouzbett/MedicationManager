@@ -1,6 +1,9 @@
 package com.beliscosolutions.corneliouzbett.medmanager01.views;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -29,7 +32,10 @@ public class LoginActivity extends AppCompatActivity {
 
     final String TAG = "LoginActivity :";
     private FirebaseAuth mAuth;
-    private GoogleSignInClient mGoogleSignInClient;
+    private static GoogleSignInClient mGoogleSignInClient;
+    public static String displayName;
+    public static String email;
+    public static Uri photouri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +83,9 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),""+account.getDisplayName(),Toast.LENGTH_LONG).show();
             mainIntent.putExtra("email",account.getEmail());
             mainIntent.putExtra("photo_url",account.getPhotoUrl());
+            displayName = account.getDisplayName();
+            email = account.getEmail();
+            photouri = account.getPhotoUrl();
             startActivity(mainIntent);
             finish();
         }
@@ -125,5 +134,17 @@ public class LoginActivity extends AppCompatActivity {
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
+    }
+
+
+    public static void signOut(Context context) {
+        mGoogleSignInClient.signOut()
+                .addOnCompleteListener((Activity) context, new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        // sign out completed succesfull
+                        Log.i("MainActivity :","Signing Out is completed successfully");
+                    }
+                });
     }
 }
