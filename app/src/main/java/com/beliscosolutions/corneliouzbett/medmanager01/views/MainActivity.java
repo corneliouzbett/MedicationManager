@@ -181,7 +181,9 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            // Handle the camera action
+            Intent mainIntent = new Intent(this,MainActivity.class);
+            mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
         } else if (id == R.id.nav_settings) {
 
         }  else if (id == R.id.nav_share) {
