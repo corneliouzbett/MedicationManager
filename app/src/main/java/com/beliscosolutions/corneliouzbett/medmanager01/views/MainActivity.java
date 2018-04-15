@@ -236,8 +236,10 @@ public class MainActivity extends AppCompatActivity
 
         }  else if (id == R.id.nav_share) {
 
-        } else if (id == R.id.nav_send) {
+            shareIt();
 
+        } else if (id == R.id.nav_send) {
+            shareIt();
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -280,6 +282,11 @@ public class MainActivity extends AppCompatActivity
                         Log.i("MainActivity :","Signing Out is completed successfully");
                     }
                 });
+    }
+
+    private void shareIt(){
+        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+        startActivity(Intent.createChooser(sharingIntent, "Share via"));
     }
 
 }

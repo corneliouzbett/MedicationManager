@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.beliscosolutions.corneliouzbett.medmanager01.R;
+import com.beliscosolutions.corneliouzbett.medmanager01.helpers.sql.DatabaseHelper;
+import com.beliscosolutions.corneliouzbett.medmanager01.model.User;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -79,9 +81,12 @@ public class LoginActivity extends AppCompatActivity {
                 mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 mainIntent.putExtra("name",account.getDisplayName().toString());
                 mainIntent.putExtra("email", account.getEmail().toString());
-                name = account.getDisplayName().toLowerCase().toString();
-                email = account.getEmail().toString().toLowerCase();
+                DatabaseHelper helper = new DatabaseHelper(this);
+                User user = new User();
+                user.setName(account.getDisplayName().toLowerCase().toString());
+                user.setEmailAddress(account.getEmail().toLowerCase().toString());
                 profile = account.getPhotoUrl();
+                helper.addUser(user);
                 startActivity(mainIntent);
                 finish();
             }
