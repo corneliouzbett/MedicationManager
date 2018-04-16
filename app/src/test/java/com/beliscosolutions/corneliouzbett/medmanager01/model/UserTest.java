@@ -40,8 +40,4 @@ public class UserTest {
     public void setPassword() throws Exception {
     }
 
-    @Test
-    public void toString() throws Exception {
-    }
-
 }

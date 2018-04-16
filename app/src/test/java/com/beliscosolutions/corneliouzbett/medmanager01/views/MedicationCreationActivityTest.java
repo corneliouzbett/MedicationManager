@@ -10,9 +10,6 @@ import static org.junit.Assert.*;
 public class MedicationCreationActivityTest {
 
 
-
-
-
     @Test
     public void onCreate() throws Exception {
     }

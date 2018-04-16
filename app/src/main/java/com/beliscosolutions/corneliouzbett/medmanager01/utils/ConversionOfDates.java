@@ -10,6 +10,12 @@ import java.util.Date;
 
 public class ConversionOfDates {
 
+    /**
+     * getDateFromString method converts string date to java.util.Date
+     * @param date
+     * @return
+     */
+
     public static Date getDateFromString(String date){
         Date new_date = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("E,MMM dd yyyy");
