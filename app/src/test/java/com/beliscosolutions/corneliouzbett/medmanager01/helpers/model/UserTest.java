@@ -1,8 +1,6 @@
-package com.beliscosolutions.corneliouzbett.medmanager01.model;
+package com.beliscosolutions.corneliouzbett.medmanager01.helpers.model;
 
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by CorneliouzBett on 15/04/2018.

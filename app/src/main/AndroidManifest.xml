@@ -37,11 +37,17 @@
         <activity android:name=".views.MedicationCreationActivity" />
         <activity android:name=".views.MedicationDetailsActivity" />
 
-        <receiver android:name=".utils.MedicationBroadCastReceiver" />
+        <receiver android:name=".utils.MedicationBroadCastReceiver">
+        <intent-filter>
+            <action android:name="android.intent.action.BOOT_COMPLETED" />
+        </intent-filter>
+        </receiver>
 
         <activity android:name=".views.CategorizeByMonth" />
         <activity android:name=".views.MonthDetailedActivity" />
         <activity android:name=".views.UpdateInfoActivity"></activity>
+
+        <service android:name=".service.medManagerJobService" />
     </application>
 
 </manifest>

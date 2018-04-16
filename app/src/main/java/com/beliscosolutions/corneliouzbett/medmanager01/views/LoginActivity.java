@@ -4,22 +4,26 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import com.beliscosolutions.corneliouzbett.medmanager01.R;
-import com.beliscosolutions.corneliouzbett.medmanager01.helpers.sql.DatabaseHelper;
-import com.beliscosolutions.corneliouzbett.medmanager01.model.User;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -32,6 +36,7 @@ public class LoginActivity extends AppCompatActivity {
     final String TAG = "LoginActivity :";
     private FirebaseAuth mAuth;
     private static GoogleSignInClient mGoogleSignInClient;
+    public static FirebaseUser currentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,17 +81,9 @@ public class LoginActivity extends AppCompatActivity {
         try {
 
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
-            if(account != null){
+            if (account != null){
                 Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
                 mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                mainIntent.putExtra("name",account.getDisplayName().toString());
-                mainIntent.putExtra("email", account.getEmail().toString());
-                DatabaseHelper helper = new DatabaseHelper(this);
-                User user = new User();
-                user.setName(account.getDisplayName().toLowerCase().toString());
-                user.setEmailAddress(account.getEmail().toLowerCase().toString());
-                profile = account.getPhotoUrl();
-                helper.addUser(user);
                 startActivity(mainIntent);
                 finish();
             }
@@ -102,6 +99,30 @@ public class LoginActivity extends AppCompatActivity {
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
+    }
+
+    private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
+        Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
+
+        AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
+        mAuth.signInWithCredential(credential)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d(TAG, "signInWithCredential:success");
+                            currentUser = mAuth.getCurrentUser();
+                            Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
+                            mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(mainIntent);
+                            finish();
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w(TAG, "signInWithCredential:failure", task.getException());
+                        }
+                    }
+                });
     }
 
 }

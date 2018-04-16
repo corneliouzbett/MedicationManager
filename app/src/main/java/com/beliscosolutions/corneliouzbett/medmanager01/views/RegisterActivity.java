@@ -11,7 +11,7 @@ import android.widget.Toast;
 import com.beliscosolutions.corneliouzbett.medmanager01.R;
 import com.beliscosolutions.corneliouzbett.medmanager01.helpers.InputValidation;
 import com.beliscosolutions.corneliouzbett.medmanager01.helpers.sql.DatabaseHelper;
-import com.beliscosolutions.corneliouzbett.medmanager01.model.User;
+import com.beliscosolutions.corneliouzbett.medmanager01.helpers.model.User;
 
 public class RegisterActivity extends AppCompatActivity {
 

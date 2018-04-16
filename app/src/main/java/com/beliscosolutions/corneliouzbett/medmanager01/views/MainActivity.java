@@ -1,7 +1,6 @@
 package com.beliscosolutions.corneliouzbett.medmanager01.views;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -22,15 +21,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.beliscosolutions.corneliouzbett.medmanager01.R;
 import com.beliscosolutions.corneliouzbett.medmanager01.adapters.MedicationRecyclerAdapter;
 import com.beliscosolutions.corneliouzbett.medmanager01.adapters.SimpleDividerItemDecoration;
 import com.beliscosolutions.corneliouzbett.medmanager01.dialogs.AlertDialog;
 import com.beliscosolutions.corneliouzbett.medmanager01.helpers.sql.DatabaseHelper;
-import com.beliscosolutions.corneliouzbett.medmanager01.model.Medication;
-import com.beliscosolutions.corneliouzbett.medmanager01.model.User;
+import com.beliscosolutions.corneliouzbett.medmanager01.helpers.model.Medication;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -38,10 +35,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, SearchView.OnQueryTextListener {
@@ -57,9 +52,6 @@ public class MainActivity extends AppCompatActivity
 
     private FirebaseAuth mAuth;
     private static GoogleSignInClient mGoogleSignInClient;
-    public static String displayName;
-    public static String email;
-    public static Uri photouri;
 
     @Override
     public void onStart() {
@@ -138,11 +130,11 @@ public class MainActivity extends AppCompatActivity
  * comment always.????!!!!!@@@@@@@@
  */
 
-/*        displayNameTextView.setText(LoginActivity.name);
-        accountEmailTextView.setText(LoginActivity.email);
+/*        displayNameTextView.setText(LoginActivity.currentUser.getDisplayName());
+        accountEmailTextView.setText(LoginActivity.currentUser.getEmail());
 
         Picasso.with(this)
-                .load(LoginActivity.profile)
+                .load(LoginActivity.currentUser.getPhotoUrl())
                 .centerCrop()
                 .into(photourlImageView);*/
 

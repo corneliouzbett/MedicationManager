@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.beliscosolutions.corneliouzbett.medmanager01.R;
 import com.beliscosolutions.corneliouzbett.medmanager01.helpers.sql.DatabaseHelper;
-import com.beliscosolutions.corneliouzbett.medmanager01.model.Medication;
+import com.beliscosolutions.corneliouzbett.medmanager01.helpers.model.Medication;
 import com.beliscosolutions.corneliouzbett.medmanager01.utils.ConversionOfDates;
 import com.beliscosolutions.corneliouzbett.medmanager01.utils.DatesDifferences;
 import com.beliscosolutions.corneliouzbett.medmanager01.views.MedicationDetailsActivity;

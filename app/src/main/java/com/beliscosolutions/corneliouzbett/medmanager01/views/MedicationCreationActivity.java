@@ -1,7 +1,6 @@
 package com.beliscosolutions.corneliouzbett.medmanager01.views;
 
 import android.app.AlarmManager;
-import android.app.Notification;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
@@ -19,11 +18,9 @@ import android.widget.Toast;
 import com.beliscosolutions.corneliouzbett.medmanager01.R;
 import com.beliscosolutions.corneliouzbett.medmanager01.helpers.InputValidation;
 import com.beliscosolutions.corneliouzbett.medmanager01.helpers.sql.DatabaseHelper;
-import com.beliscosolutions.corneliouzbett.medmanager01.model.Medication;
-import com.beliscosolutions.corneliouzbett.medmanager01.utils.AlarmReminder;
+import com.beliscosolutions.corneliouzbett.medmanager01.helpers.model.Medication;
 import com.beliscosolutions.corneliouzbett.medmanager01.utils.ConversionOfDates;
 import com.beliscosolutions.corneliouzbett.medmanager01.utils.MedicationBroadCastReceiver;
-import com.beliscosolutions.corneliouzbett.medmanager01.utils.Notifications;
 import com.savvi.rangedatepicker.CalendarPickerView;
 
 import java.util.Calendar;

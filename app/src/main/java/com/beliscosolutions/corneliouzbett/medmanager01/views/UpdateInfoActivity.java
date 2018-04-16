@@ -9,9 +9,8 @@ import android.widget.Toast;
 
 import com.beliscosolutions.corneliouzbett.medmanager01.R;
 import com.beliscosolutions.corneliouzbett.medmanager01.helpers.sql.DatabaseHelper;
-import com.beliscosolutions.corneliouzbett.medmanager01.model.User;
+import com.beliscosolutions.corneliouzbett.medmanager01.helpers.model.User;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class UpdateInfoActivity extends AppCompatActivity {

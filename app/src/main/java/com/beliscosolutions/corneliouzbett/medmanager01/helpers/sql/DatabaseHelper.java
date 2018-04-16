@@ -6,8 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.beliscosolutions.corneliouzbett.medmanager01.model.Medication;
-import com.beliscosolutions.corneliouzbett.medmanager01.model.User;
+import com.beliscosolutions.corneliouzbett.medmanager01.helpers.model.Medication;
+import com.beliscosolutions.corneliouzbett.medmanager01.helpers.model.User;
 import com.beliscosolutions.corneliouzbett.medmanager01.utils.ConversionOfDates;
 import com.beliscosolutions.corneliouzbett.medmanager01.utils.GetMonthValue;
 

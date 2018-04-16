@@ -1,4 +1,4 @@
-package com.beliscosolutions.corneliouzbett.medmanager01.model;
+package com.beliscosolutions.corneliouzbett.medmanager01.helpers.model;
 
 /**
  * Created by CorneliouzBett on 04/04/2018.

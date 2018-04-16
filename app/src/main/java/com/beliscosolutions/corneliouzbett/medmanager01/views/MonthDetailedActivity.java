@@ -12,7 +12,7 @@ import com.beliscosolutions.corneliouzbett.medmanager01.R;
 import com.beliscosolutions.corneliouzbett.medmanager01.adapters.MedicationRecyclerAdapter;
 import com.beliscosolutions.corneliouzbett.medmanager01.adapters.SimpleDividerItemDecoration;
 import com.beliscosolutions.corneliouzbett.medmanager01.helpers.sql.DatabaseHelper;
-import com.beliscosolutions.corneliouzbett.medmanager01.model.Medication;
+import com.beliscosolutions.corneliouzbett.medmanager01.helpers.model.Medication;
 import com.beliscosolutions.corneliouzbett.medmanager01.utils.GetMonthByNumber;
 
 import java.util.ArrayList;
