@@ -8,7 +8,7 @@ import android.content.Context;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 
-import com.beliscosolutions.corneliouzbett.medmanager01.service.medManagerJobService;
+import com.beliscosolutions.corneliouzbett.medmanager01.utils.service.medManagerJobService;
 
 /**
  * Created by CorneliouzBett on 16/04/2018.

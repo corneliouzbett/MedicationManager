@@ -47,7 +47,7 @@
         <activity android:name=".views.MonthDetailedActivity" />
         <activity android:name=".views.UpdateInfoActivity"></activity>
 
-        <service android:name=".service.medManagerJobService" />
+        <service android:name=".utils.service.medManagerJobService" />
     </application>
 
 </manifest>

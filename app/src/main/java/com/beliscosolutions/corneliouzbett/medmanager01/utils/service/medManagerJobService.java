@@ -1,4 +1,4 @@
-package com.beliscosolutions.corneliouzbett.medmanager01.service;
+package com.beliscosolutions.corneliouzbett.medmanager01.utils.service;
 
 import android.annotation.TargetApi;
 import android.app.job.JobParameters;
