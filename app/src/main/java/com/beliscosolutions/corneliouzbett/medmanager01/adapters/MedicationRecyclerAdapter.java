@@ -15,6 +15,7 @@ import com.beliscosolutions.corneliouzbett.medmanager01.helpers.sql.DatabaseHelp
 import com.beliscosolutions.corneliouzbett.medmanager01.helpers.model.Medication;
 import com.beliscosolutions.corneliouzbett.medmanager01.utils.ConversionOfDates;
 import com.beliscosolutions.corneliouzbett.medmanager01.utils.DatesDifferences;
+import com.beliscosolutions.corneliouzbett.medmanager01.views.MedicationCreationActivity;
 import com.beliscosolutions.corneliouzbett.medmanager01.views.MedicationDetailsActivity;
 
 import java.util.ArrayList;
@@ -88,6 +89,7 @@ public class MedicationRecyclerAdapter extends RecyclerView.Adapter<MedicationRe
                                     DatabaseHelper helper = new DatabaseHelper(v.getContext());
                                     helper.deleteMedication(listMedication.get(pos).getName());
                                     listMedication.remove(pos);
+                                    MedicationCreationActivity.terminateScheduleJob(100,itemView.getContext().getApplicationContext());
                                     notifyDataSetChanged();
                                 }
                             });

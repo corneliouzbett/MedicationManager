@@ -1,4 +1,4 @@
-package com.beliscosolutions.corneliouzbett.medmanager01.dialogs;
+package com.beliscosolutions.corneliouzbett.medmanager01.utils.dialogs;
 
 import android.content.Context;
 import android.content.DialogInterface;

@@ -7,6 +7,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.beliscosolutions.corneliouzbett.medmanager01.R;
 import com.beliscosolutions.corneliouzbett.medmanager01.adapters.MedicationRecyclerAdapter;
@@ -31,6 +32,7 @@ public class MonthDetailedActivity extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         month = bundle.getInt("month");
+        Toast.makeText(getApplicationContext(), " Month:"+String.valueOf(month),Toast.LENGTH_SHORT).show();
         getSupportActionBar().setTitle(GetMonthByNumber.get(month + 1));
 
         if (getSupportActionBar() != null){
@@ -61,7 +63,7 @@ public class MonthDetailedActivity extends AppCompatActivity {
             @Override
             protected Void doInBackground(Void... params) {
                 medicationMonthArrayList.clear();
-                medicationMonthArrayList.addAll(databaseHelper.getAllMedicationsByMonth(month));
+                medicationMonthArrayList.addAll(databaseHelper.getAllMedicationsByMonth(month + 1));
 
                 return null;
             }

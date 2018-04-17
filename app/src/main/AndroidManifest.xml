@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
         android:allowBackup="true"
@@ -47,7 +48,9 @@
         <activity android:name=".views.MonthDetailedActivity" />
         <activity android:name=".views.UpdateInfoActivity"></activity>
 
-        <service android:name=".utils.service.medManagerJobService" />
+        <service android:name=".utils.service.medManagerJobService"
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            android:exported="true"/>
     </application>
 
 </manifest>

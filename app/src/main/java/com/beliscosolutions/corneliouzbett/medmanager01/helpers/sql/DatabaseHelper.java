@@ -21,7 +21,7 @@ import java.util.List;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     // Database Version
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
     // Database Name
     private static final String DATABASE_NAME = "MedicationManager.db";
     // drop the database
@@ -43,7 +43,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 MedicationContract.MedicationEntry.COLUMN_MEDICATION_DESCRIPTION+" TEXT NOT NULL,"+
                 MedicationContract.MedicationEntry.COLUMN_MEDICATION_INTERVAL+" TEXT NOT NULL,"+
                 MedicationContract.MedicationEntry.COLUMN_MEDICATION_STARTDATE+" TEXT NOT NULL,"+
-                MedicationContract.MedicationEntry.COLUMN_MEDICATION_ENDDATE+" TEXT NOT NULL"+
+                MedicationContract.MedicationEntry.COLUMN_MEDICATION_ENDDATE+" TEXT NOT NULL,"+
+                MedicationContract.MedicationEntry.COLUMN_MEDICATION_PENDING_INTENT+" TEXT NOT NULL"+
                 ");";
         final String SQL_CREATE_TABLE_USER = "CREATE TABLE " +UserContract.UserEntry.TABLE_NAME+"("+
                 UserContract.UserEntry._ID +" INTEGER NOT NULL,"+
@@ -80,6 +81,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cv_Medication.put(MedicationContract.MedicationEntry.COLUMN_MEDICATION_INTERVAL, medication.getInterval());
         cv_Medication.put(MedicationContract.MedicationEntry.COLUMN_MEDICATION_STARTDATE, medication.getStart_date());
         cv_Medication.put(MedicationContract.MedicationEntry.COLUMN_MEDICATION_ENDDATE, medication.getEnd_date());
+        cv_Medication.put(MedicationContract.MedicationEntry.COLUMN_MEDICATION_PENDING_INTENT, medication.getPendingIntent());
 
         status = database.insert(MedicationContract.MedicationEntry.TABLE_NAME,null,cv_Medication);
         database.close();

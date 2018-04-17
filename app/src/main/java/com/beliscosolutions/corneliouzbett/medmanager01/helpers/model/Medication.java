@@ -1,5 +1,7 @@
 package com.beliscosolutions.corneliouzbett.medmanager01.helpers.model;
 
+
+import android.app.PendingIntent;
 /**
  * Created by CorneliouzBett on 04/04/2018.
  */
@@ -11,17 +13,28 @@ public class Medication {
     private String interval;
     private String start_date;
     private String end_date;
+    private String pendingIntent;
 
-    public Medication(int id, String name, String description, String interval, String start_date, String end_date) {
+    public Medication(int id, String name, String description, String interval, String start_date, String end_date
+    ,String pendingIntent) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.interval = interval;
         this.start_date = start_date;
         this.end_date = end_date;
+        this.pendingIntent = pendingIntent;
     }
 
     public Medication() {
+    }
+
+    public String getPendingIntent() {
+        return pendingIntent;
+    }
+
+    public void setPendingIntent(String pendingIntent) {
+        this.pendingIntent = pendingIntent;
     }
 
     public int getId() {

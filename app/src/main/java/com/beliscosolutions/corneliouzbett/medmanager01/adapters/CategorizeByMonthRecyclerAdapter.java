@@ -19,6 +19,7 @@ public class CategorizeByMonthRecyclerAdapter extends RecyclerView.Adapter<Categ
 
     private String [] months;
     private LayoutInflater layoutInflater;
+    public static String month_selected;
 
     public CategorizeByMonthRecyclerAdapter(String[] months, Context context) {
         this.months = months;
@@ -37,7 +38,7 @@ public class CategorizeByMonthRecyclerAdapter extends RecyclerView.Adapter<Categ
     public void onBindViewHolder(ViewHolder holder, int position) {
         String month = months[position];
         holder.monthTextView.setText(month);
-        holder.numberOfMedicationTextView.setText("001 prescribed Medicine");
+        holder.numberOfMedicationTextView.setText(String.valueOf(getItemCount()));
 
     }
 

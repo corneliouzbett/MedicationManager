@@ -1,10 +1,12 @@
 package com.beliscosolutions.corneliouzbett.medmanager01.utils.service;
 
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.job.JobParameters;
 import android.app.job.JobService;
 import android.content.Intent;
 import android.os.Build;
+import android.widget.Toast;
 
 import com.beliscosolutions.corneliouzbett.medmanager01.utils.MedicationBroadCastReceiver;
 import com.beliscosolutions.corneliouzbett.medmanager01.utils.Util;
@@ -13,21 +15,27 @@ import com.beliscosolutions.corneliouzbett.medmanager01.utils.Util;
  * Created by CorneliouzBett on 16/04/2018.
  */
 
-@TargetApi(Build.VERSION_CODES.LOLLIPOP)
 public class medManagerJobService extends JobService {
 
-    private static final String TAG = "SyncService";
+    MedicationJobExecutor medicationJobExecutor;
 
     @Override
     public boolean onStartJob(JobParameters params) {
-        Intent service = new Intent(getApplicationContext(), MedicationBroadCastReceiver.class);
-        getApplicationContext().startService(service);
-        Util.scheduleJob(getApplicationContext());
-        return true;
+    medicationJobExecutor = new MedicationJobExecutor(){
+        @Override
+        protected void onPostExecute(String s) {
+            Toast.makeText(getApplicationContext(), "fdfdsdsds"+s, Toast.LENGTH_LONG).show();
+            jobFinished(params,false);
+        }
+    };
+    medicationJobExecutor.execute();
+
+        return false;
     }
 
     @Override
     public boolean onStopJob(JobParameters params) {
-        return true;
+        medicationJobExecutor.cancel(true);
+        return false;
     }
 }

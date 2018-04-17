@@ -15,5 +15,7 @@ public class MedicationContract {
         public static final String COLUMN_MEDICATION_INTERVAL = "medication_interval";
         public static final String COLUMN_MEDICATION_STARTDATE = "medication_start_date";
         public static final String COLUMN_MEDICATION_ENDDATE = "medication_end_date";
+        public static final String COLUMN_MEDICATION_PENDING_INTENT = "medication_pending_intent";
+
     }
 }

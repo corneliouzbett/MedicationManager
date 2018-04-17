@@ -1,5 +1,6 @@
 package com.beliscosolutions.corneliouzbett.medmanager01.views;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -25,7 +26,7 @@ import android.widget.TextView;
 import com.beliscosolutions.corneliouzbett.medmanager01.R;
 import com.beliscosolutions.corneliouzbett.medmanager01.adapters.MedicationRecyclerAdapter;
 import com.beliscosolutions.corneliouzbett.medmanager01.adapters.SimpleDividerItemDecoration;
-import com.beliscosolutions.corneliouzbett.medmanager01.dialogs.AlertDialog;
+import com.beliscosolutions.corneliouzbett.medmanager01.utils.dialogs.AlertDialog;
 import com.beliscosolutions.corneliouzbett.medmanager01.helpers.sql.DatabaseHelper;
 import com.beliscosolutions.corneliouzbett.medmanager01.helpers.model.Medication;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -243,6 +244,7 @@ public class MainActivity extends AppCompatActivity
     /**
      * This method is to fetch all medication records from SQLite
      */
+    @SuppressLint("StaticFieldLeak")
     private void getDataFromSQLite() {
         // AsyncTask is used that SQLite operation not blocks the UI Thread.
         new AsyncTask<Void, Void, Void>() {
