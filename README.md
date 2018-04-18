@@ -12,4 +12,16 @@ Check out the Medication Manager project mockups using the link below
 
 # Sample project Snapshot
 
-![alt text](https://github.com/corneliouzbett/MedicationManager/blob/master/medmanager.PNG)
+![alt text](https://github.com/corneliouzbett/MedicationManager/blob/master/Screenshot_20180418-200133%5B1%5D.png)
+
+![alt text](https://github.com/corneliouzbett/MedicationManager/blob/master/Screenshot_20180418-200155%5B1%5D.png)
+
+![alt text](https://github.com/corneliouzbett/MedicationManager/blob/master/Screenshot_20180418-200219%5B1%5D.png)
+
+![alt text](https://github.com/corneliouzbett/MedicationManager/blob/master/Screenshot_20180418-200229%5B1%5D.png)
+
+![alt text](https://github.com/corneliouzbett/MedicationManager/blob/master/Screenshot_20180418-200238%5B1%5D.png)
+
+![alt text](https://github.com/corneliouzbett/MedicationManager/blob/master/Screenshot_20180418-200246%5B1%5D.png)
+
+![alt text](https://github.com/corneliouzbett/MedicationManager/blob/master/Screenshot_20180418-200301%5B1%5D.png)
