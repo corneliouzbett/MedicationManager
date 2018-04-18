@@ -178,11 +178,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
         db.close();
 
-        if (cursorCount > 0) {
-            return true;
-        }
+        return cursorCount > 0;
 
-        return false;
     }
 
     /**
