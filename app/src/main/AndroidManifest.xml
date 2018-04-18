@@ -4,7 +4,7 @@
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -39,18 +39,21 @@
         <activity android:name=".views.MedicationDetailsActivity" />
 
         <receiver android:name=".utils.MedicationBroadCastReceiver">
-        <intent-filter>
-            <action android:name="android.intent.action.BOOT_COMPLETED" />
-        </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
         </receiver>
 
         <activity android:name=".views.CategorizeByMonth" />
         <activity android:name=".views.MonthDetailedActivity" />
-        <activity android:name=".views.UpdateInfoActivity"></activity>
+        <activity android:name=".views.UpdateInfoActivity" />
 
-        <service android:name=".utils.service.medManagerJobService"
-            android:permission="android.permission.BIND_JOB_SERVICE"
-            android:exported="true"/>
+        <service
+            android:name=".utils.service.medManagerJobService"
+            android:exported="true"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
+        <activity android:name=".views.HelpActivity"></activity>
     </application>
 
 </manifest>

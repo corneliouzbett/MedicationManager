@@ -81,6 +81,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cv_Medication.put(MedicationContract.MedicationEntry.COLUMN_MEDICATION_INTERVAL, medication.getInterval());
         cv_Medication.put(MedicationContract.MedicationEntry.COLUMN_MEDICATION_STARTDATE, medication.getStart_date());
         cv_Medication.put(MedicationContract.MedicationEntry.COLUMN_MEDICATION_ENDDATE, medication.getEnd_date());
+
         cv_Medication.put(MedicationContract.MedicationEntry.COLUMN_MEDICATION_PENDING_INTENT, medication.getPendingIntent());
 
         status = database.insert(MedicationContract.MedicationEntry.TABLE_NAME,null,cv_Medication);

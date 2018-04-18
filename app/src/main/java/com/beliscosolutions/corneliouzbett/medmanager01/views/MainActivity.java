@@ -22,10 +22,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.beliscosolutions.corneliouzbett.medmanager01.R;
 import com.beliscosolutions.corneliouzbett.medmanager01.adapters.MedicationRecyclerAdapter;
 import com.beliscosolutions.corneliouzbett.medmanager01.adapters.SimpleDividerItemDecoration;
+import com.beliscosolutions.corneliouzbett.medmanager01.helpers.model.User;
 import com.beliscosolutions.corneliouzbett.medmanager01.utils.dialogs.AlertDialog;
 import com.beliscosolutions.corneliouzbett.medmanager01.helpers.sql.DatabaseHelper;
 import com.beliscosolutions.corneliouzbett.medmanager01.helpers.model.Medication;
@@ -53,6 +55,7 @@ public class MainActivity extends AppCompatActivity
 
     private FirebaseAuth mAuth;
     private static GoogleSignInClient mGoogleSignInClient;
+    private String displayName;
 
     @Override
     public void onStart() {
@@ -126,6 +129,15 @@ public class MainActivity extends AppCompatActivity
         accountEmailTextView = findViewById(R.id.tv_account_email);
         photourlImageView = findViewById(R.id.imageview_photourl);
 
+        DatabaseHelper  helper = new DatabaseHelper(this);
+        for (User user : helper.getAllUsers()){
+            displayNameTextView.setText(user.getName());
+            Toast.makeText(this, ""+user.getName(), Toast.LENGTH_SHORT).show();
+        }
+
+       // Toast.makeText(this, ""+GoogleSignIn.getLastSignedInAccount(this).getDisplayName(), Toast.LENGTH_SHORT).show();
+        //displayNameTextView.setText(GoogleSignIn.getLastSignedInAccount(this).getDisplayName());
+
 /**
  * Mr code, try to behave the next time  or you will remain
  * comment always.????!!!!!@@@@@@@@
@@ -178,6 +190,10 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.action_signout){
            signOut();
+        } else if (id == R.id.action_help){
+            Intent intent = new Intent(this,HelpActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
         } else if (id == R.id.action_update_profile){
             Intent intent = new Intent(this,UpdateInfoActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

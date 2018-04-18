@@ -10,5 +10,8 @@
     <string name="action_aboutus">About Us</string>
     <string name="action_help">Help</string>
 
+    <string name="help_body">Med-Manager is a simple app that helps patients remember
+        to take their medication and provides tracking for the intake of the prescribed medication intake.</string>
+
     <string name="server_client_id">221037125239-dp88i25ldv9e1nvthit2q83fa98v7bg7.apps.googleusercontent.com</string>
 </resources>

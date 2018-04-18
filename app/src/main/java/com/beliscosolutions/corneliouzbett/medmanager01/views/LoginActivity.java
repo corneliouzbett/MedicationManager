@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.beliscosolutions.corneliouzbett.medmanager01.R;
+import com.beliscosolutions.corneliouzbett.medmanager01.helpers.sql.DatabaseHelper;
+import com.firebase.ui.auth.data.model.User;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -60,8 +62,6 @@ public class LoginActivity extends AppCompatActivity {
                 signIn();
             }
         });
-
-
     }
 
     @Override
@@ -82,6 +82,15 @@ public class LoginActivity extends AppCompatActivity {
 
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
             if (account != null){
+
+                DatabaseHelper databaseHelper = new DatabaseHelper(this);
+                com.beliscosolutions.corneliouzbett.medmanager01.helpers.model.User userProfile =
+                        new com.beliscosolutions.corneliouzbett.medmanager01.helpers.model.User();
+                userProfile.setEmailAddress(account.getEmail());
+                userProfile.setName(account.getDisplayName());
+                userProfile.setPhotoUri(account.getPhotoUrl());
+                databaseHelper.addUser(userProfile);
+
                 Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
                 mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(mainIntent);
