@@ -9,6 +9,9 @@ Check out the Medication Manager project mockups using the link below
 
 (https://www.figma.com/file/QjhpXvrFZtpcYQYMmOsgMcpB/Med-manager?node-id=24%3A0)
 
+# Project APK for testing the application
+
+(https://github.com/corneliouzbett/MedicationManager/blob/master/app-debug.apk)
 
 # Sample project Snapshot
 
