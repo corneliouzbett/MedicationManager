@@ -14,12 +14,12 @@
    <ScrollView
        android:layout_width="match_parent"
        android:layout_height="match_parent">
-       <android.support.constraint.ConstraintLayout
+       <LinearLayout
+           android:orientation="vertical"
            android:layout_width="match_parent"
            android:layout_gravity="center"
-           android:padding="20dp"
+           android:padding="10dp"
            android:layout_margin="15dp"
-           android:background="@color/primaryColor"
            android:layout_height="match_parent">
 
            <ImageView
@@ -27,11 +27,8 @@
                android:layout_width="150dp"
                android:layout_height="150dp"
                android:layout_marginEnd="8dp"
-               android:layout_marginTop="40dp"
-               android:layout_marginStart="8dp"
-               app:layout_constraintEnd_toEndOf="parent"
-               app:layout_constraintStart_toStartOf="parent"
-               app:layout_constraintTop_toTopOf="parent"
+               android:layout_marginTop="10dp"
+               android:gravity="center"
                app:srcCompat="@drawable/image_medicine" />
 
            <TextView
@@ -39,16 +36,60 @@
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:layout_marginEnd="8dp"
-               android:layout_marginStart="8dp"
                android:layout_marginTop="14dp"
                android:fontFamily="sans-serif"
-               android:textAllCaps="true"
                android:text="Med-Manager"
-               android:textSize="24sp"
+               android:textAllCaps="true"
+               android:textColor="@color/colorPrimary"
+               android:textSize="24sp" />
+           <android.support.design.widget.TextInputLayout
+               android:id="@+id/text_input_username"
+               android:layout_width="match_parent"
+               android:layout_margin="8dp"
+               android:layout_height="match_parent">
+
+               <android.support.design.widget.TextInputEditText
+                   android:id="@+id/text_input_editText_username"
+                   android:drawableLeft="@drawable/ic_person_black_24dp"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:hint="Username" />
+           </android.support.design.widget.TextInputLayout>
+           <android.support.design.widget.TextInputLayout
+               android:id="@+id/text_input_password"
+               android:layout_width="match_parent"
+               android:layout_margin="8dp"
+               android:layout_height="match_parent">
+
+               <android.support.design.widget.TextInputEditText
+                   android:id="@+id/text_input_editText_password"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:drawableLeft="@drawable/ic_password_black_24dp"
+                   android:hint="password" />
+           </android.support.design.widget.TextInputLayout>
+
+           <Button
+               android:id="@+id/button_login"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_margin="10dp"
+               android:text="Login"
+               android:textAllCaps="true"
                android:textColor="@android:color/white"
-               app:layout_constraintEnd_toEndOf="parent"
-               app:layout_constraintStart_toStartOf="parent"
-               app:layout_constraintTop_toBottomOf="@+id/imageview_logo" />
+               android:textSize="16sp"
+               android:background="@drawable/button_style_rounded_corners"/>
+           <TextView
+               android:id="@+id/tv_register"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="15dp"
+               android:layout_marginLeft="25dp"
+               android:textSize="13sp"
+               android:clickable="true"
+               android:focusable="true"
+               android:textColor="#1976d2"
+               android:text="Don't have an account? tap here to register" />
 
            <com.google.android.gms.common.SignInButton
                android:id="@+id/sign_in_button"
@@ -56,14 +97,9 @@
                android:layout_height="60dp"
                android:layout_marginEnd="4dp"
                android:layout_marginStart="4dp"
-               android:layout_marginTop="40dp"
-               android:layout_marginBottom="30dp"
-               app:layout_constraintEnd_toEndOf="parent"
-               app:layout_constraintStart_toStartOf="parent"
-               app:layout_constraintTop_toBottomOf="@+id/tv_med_manager_title"/>
+               android:layout_marginTop="20dp"/>
 
-       </android.support.constraint.ConstraintLayout>
+       </LinearLayout>
    </ScrollView>
-
 
 </FrameLayout>

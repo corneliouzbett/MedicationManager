@@ -51,6 +51,7 @@ public class RegisterActivity extends AppCompatActivity {
             user.setPassword(passwordTextInputEditText.getText().toString().trim());
             long status = databaseHelper.addUser(user);
             if (status != -1){
+                Toast.makeText(this, "Registration Successful", Toast.LENGTH_SHORT).show();
                 Intent loginIntent = new Intent(RegisterActivity.this,LoginActivity.class);
                 loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(loginIntent);

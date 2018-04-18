@@ -8,6 +8,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.beliscosolutions.corneliouzbett.medmanager01.R;
@@ -35,6 +36,8 @@ public class LoginActivity extends AppCompatActivity {
     public static String email;
     public static Uri profile;
 
+    private TextView registerTextView;
+
     final String TAG = "LoginActivity :";
     private FirebaseAuth mAuth;
     private static GoogleSignInClient mGoogleSignInClient;
@@ -46,6 +49,16 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         mAuth = FirebaseAuth.getInstance();
+
+        registerTextView = findViewById(R.id.tv_register);
+        registerTextView.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent registerIntent = new Intent(LoginActivity.this,RegisterActivity.class);
+                startActivity(registerIntent);
+            }
+        });
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
@@ -88,7 +101,6 @@ public class LoginActivity extends AppCompatActivity {
                         new com.beliscosolutions.corneliouzbett.medmanager01.helpers.model.User();
                 userProfile.setEmailAddress(account.getEmail());
                 userProfile.setName(account.getDisplayName());
-                userProfile.setPhotoUri(account.getPhotoUrl());
                 databaseHelper.addUser(userProfile);
 
                 Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
