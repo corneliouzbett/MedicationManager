@@ -129,11 +129,11 @@ public class MainActivity extends AppCompatActivity
         accountEmailTextView = findViewById(R.id.tv_account_email);
         photourlImageView = findViewById(R.id.imageview_photourl);
 
-        DatabaseHelper  helper = new DatabaseHelper(this);
+/*        DatabaseHelper  helper = new DatabaseHelper(this);
         for (User user : helper.getAllUsers()){
             displayNameTextView.setText(user.getName());
             Toast.makeText(this, ""+user.getName(), Toast.LENGTH_SHORT).show();
-        }
+        }*/
 
        // Toast.makeText(this, ""+GoogleSignIn.getLastSignedInAccount(this).getDisplayName(), Toast.LENGTH_SHORT).show();
         //displayNameTextView.setText(GoogleSignIn.getLastSignedInAccount(this).getDisplayName());

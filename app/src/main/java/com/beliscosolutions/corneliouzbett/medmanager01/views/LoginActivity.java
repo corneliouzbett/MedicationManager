@@ -5,13 +5,19 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
+import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.ButtonBarLayout;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.beliscosolutions.corneliouzbett.medmanager01.R;
+import com.beliscosolutions.corneliouzbett.medmanager01.helpers.InputValidation;
 import com.beliscosolutions.corneliouzbett.medmanager01.helpers.sql.DatabaseHelper;
 import com.firebase.ui.auth.data.model.User;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -28,15 +34,17 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
+import java.util.ArrayList;
+
 public class LoginActivity extends AppCompatActivity {
 
     private static final int RC_SIGN_IN = 1;
     private SignInButton signinwithGoogleButton;
     public static String name;
-    public static String email;
-    public static Uri profile;
-
     private TextView registerTextView;
+    private Button loginButton;
+    private TextInputEditText emailAddressTextInputEditText;
+    private TextInputEditText passwordTextInputEditText;
 
     final String TAG = "LoginActivity :";
     private FirebaseAuth mAuth;
@@ -50,6 +58,12 @@ public class LoginActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
+        emailAddressTextInputEditText = findViewById(R.id.text_input_editText_usernamelogin);
+        passwordTextInputEditText = findViewById(R.id.text_input_editText_passwordlogin);
+
+        TextInputLayout emailTextInputLayout = findViewById(R.id.text_input_usernamelogin);
+        TextInputLayout passwordTextInputLayout = findViewById(R.id.text_input_passwordlogin);
+
         registerTextView = findViewById(R.id.tv_register);
         registerTextView.setOnClickListener(new View.OnClickListener() {
 
@@ -58,6 +72,31 @@ public class LoginActivity extends AppCompatActivity {
                 Intent registerIntent = new Intent(LoginActivity.this,RegisterActivity.class);
                 startActivity(registerIntent);
             }
+        });
+        loginButton = findViewById(R.id.button_login);
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                InputValidation inputValidation = new InputValidation(getApplicationContext());
+              if (  inputValidation.isInputEditTextEmail(emailAddressTextInputEditText,emailTextInputLayout,"Enter valid email") &&
+                inputValidation.isInputEditTextFilled(emailAddressTextInputEditText,emailTextInputLayout,"please enter email here") &&
+                        inputValidation.isInputEditTextFilled(passwordTextInputEditText,passwordTextInputLayout,"Please enter password")){
+
+                  if (authenticateWithEmailandPassword(emailAddressTextInputEditText.getText().toString().trim(),
+                          passwordTextInputEditText.getText().toString().trim())){
+
+                      Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
+                      mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                      startActivity(mainIntent);
+                      finish();
+
+                  } else {
+                      Snackbar.make(v, "Bad Credentials Login Failed. Please try again", Snackbar.LENGTH_LONG)
+                        .setAction("OK", null).show();
+                  }
+                  }
+
+                }
         });
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -144,6 +183,21 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    private boolean authenticateWithEmailandPassword(String email , String password){
+        DatabaseHelper authHelper = new DatabaseHelper(this);
+        java.util.List<com.beliscosolutions.corneliouzbett.medmanager01.helpers.model.User> appUser = new ArrayList <>();
+        boolean status = false;
+        for (com.beliscosolutions.corneliouzbett.medmanager01.helpers.model.User user_app : authHelper.getAllUsers()){
+            if (user_app.getEmailAddress() == email && user_app.getPassword() == password){
+                status = true;
+                break;
+            } else {
+                status = false;
+            }
+        }
+        return status;
     }
 
 }
