@@ -10,7 +10,7 @@
     <color name="secondaryTextColor">#fafafa</color>
 
     <color name="drak_gray">#616161</color>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#009688</color>
+    <color name="colorPrimaryDark">#00675b</color>
+    <color name="colorAccent">#00c853</color>
 </resources>
