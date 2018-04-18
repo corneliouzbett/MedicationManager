@@ -72,4 +72,3 @@
         android:layout_margin="@dimen/fab_margin"
         android:src="@drawable/ic_fab_add_24dp"/>
 </android.support.design.widget.CoordinatorLayout>
-

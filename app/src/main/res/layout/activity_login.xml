@@ -27,7 +27,6 @@
                android:id="@+id/imageview_logo"
                android:layout_width="150dp"
                android:layout_height="150dp"
-               android:layout_marginEnd="8dp"
                android:layout_marginTop="10dp"
                android:gravity="center"
                app:srcCompat="@drawable/image_medicine" />
@@ -36,7 +35,6 @@
                android:id="@+id/tv_med_manager_title"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:layout_marginEnd="8dp"
                android:layout_marginTop="14dp"
                android:fontFamily="sans-serif"
                android:text="Med-Manager"
