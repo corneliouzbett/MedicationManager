@@ -9,10 +9,6 @@ Check out the Medication Manager project mockups using the link below
 
 (https://www.figma.com/file/QjhpXvrFZtpcYQYMmOsgMcpB/Med-manager?node-id=24%3A0)
 
-# Project APK for testing the application
-
-(https://github.com/corneliouzbett/MedicationManager/blob/master/app-debug.apk)
-
 # Sample project Snapshot
 
 ![alt text](https://github.com/corneliouzbett/MedicationManager/blob/master/Screenshot_20180418-200133%5B1%5D.png)
@@ -25,6 +21,4 @@ Check out the Medication Manager project mockups using the link below
 
 ![alt text](https://github.com/corneliouzbett/MedicationManager/blob/master/Screenshot_20180418-200238%5B1%5D.png)
 
-![alt text](https://github.com/corneliouzbett/MedicationManager/blob/master/Screenshot_20180418-200246%5B1%5D.png)
 
-![alt text](https://github.com/corneliouzbett/MedicationManager/blob/master/Screenshot_20180418-200301%5B1%5D.png)
