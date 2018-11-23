@@ -30,7 +30,6 @@ import com.beliscosolutions.corneliouzbett.medmanager01.helpers.model.Medication
 import com.beliscosolutions.corneliouzbett.medmanager01.helpers.sql.DatabaseHelper;
 import com.beliscosolutions.corneliouzbett.medmanager01.utils.dialogs.AlertDialog;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -39,7 +38,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity
+public class MainActivity_MED extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, SearchView.OnQueryTextListener {
 
     private RecyclerView medicationRecyclerView;
@@ -55,7 +54,7 @@ public class MainActivity extends AppCompatActivity
     private static GoogleSignInClient mGoogleSignInClient;
     private String displayName;
 
-    @Override
+  /*  @Override
     public void onStart() {
         super.onStart();
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
@@ -66,7 +65,7 @@ public class MainActivity extends AppCompatActivity
             finish();
         }
         // continue using the app
-    }
+    } */
 
 
     @Override
@@ -92,7 +91,7 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent medCreationIntent = new Intent(MainActivity.this,MedicationCreationActivity.class);
+                Intent medCreationIntent = new Intent(MainActivity_MED.this,MedicationCreationActivity.class);
                 medCreationIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(medCreationIntent);
 
@@ -198,7 +197,7 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
         }else if (id == R.id.action_category){
 
-            Intent categotyIntent = new Intent(MainActivity.this,CategorizeByMonth.class);
+            Intent categotyIntent = new Intent(MainActivity_MED.this,CategorizeByMonth.class);
             categotyIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(categotyIntent);
         }
@@ -232,7 +231,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            Intent mainIntent = new Intent(this, MainActivity.class);
+            Intent mainIntent = new Intent(this, MainActivity_MED.class);
             mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
         } else if (id == R.id.nav_profile) {
