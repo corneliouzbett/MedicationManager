@@ -7,7 +7,7 @@ Med-Manager is a simple app that helps patients remember  to take their medicati
 
 # Mockups
 
-Check out the Medication Manager project mockups using the link below
+  * Check out the Medication Manager project mockups using the link below
 
 (https://www.figma.com/file/QjhpXvrFZtpcYQYMmOsgMcpB/Med-manager?node-id=24%3A0)
 
