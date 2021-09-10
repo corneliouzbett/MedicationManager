@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.beliscosolutions.corneliouzbett.medmanager01">
+    package="com.corneliouzbett.medmanager">
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -16,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".views.MainActivity"
+            android:name="com.corneliouzbett.medmanager.views.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -26,7 +26,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".views.LoginActivity"
+            android:name="com.corneliouzbett.medmanager.views.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,26 +34,26 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".views.RegisterActivity" />
-        <activity android:name=".views.MedicationCreationActivity" />
-        <activity android:name=".views.MedicationDetailsActivity" />
+        <activity android:name="com.corneliouzbett.medmanager.views.RegisterActivity" />
+        <activity android:name="com.corneliouzbett.medmanager.views.MedicationCreationActivity" />
+        <activity android:name="com.corneliouzbett.medmanager.views.MedicationDetailsActivity" />
 
-        <receiver android:name=".utils.MedicationBroadCastReceiver">
+        <receiver android:name="com.corneliouzbett.medmanager.utils.MedicationBroadCastReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
 
-        <activity android:name=".views.CategorizeByMonth" />
-        <activity android:name=".views.MonthDetailedActivity" />
-        <activity android:name=".views.UpdateInfoActivity" />
+        <activity android:name="com.corneliouzbett.medmanager.views.CategorizeByMonth" />
+        <activity android:name="com.corneliouzbett.medmanager.views.MonthDetailedActivity" />
+        <activity android:name="com.corneliouzbett.medmanager.views.UpdateInfoActivity" />
 
         <service
-            android:name=".utils.service.medManagerJobService"
+            android:name="com.corneliouzbett.medmanager.utils.service.medManagerJobService"
             android:exported="true"
             android:permission="android.permission.BIND_JOB_SERVICE" />
 
-        <activity android:name=".views.HelpActivity"></activity>
+        <activity android:name="com.corneliouzbett.medmanager.views.HelpActivity" />
     </application>
 
 </manifest>

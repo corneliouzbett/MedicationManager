@@ -1,104 +1,36 @@
 {
   "project_info": {
-    "project_number": "221037125239",
-    "firebase_url": "https://medmanager01.firebaseio.com",
-    "project_id": "medmanager01",
-    "storage_bucket": "medmanager01.appspot.com"
+    "project_number": "167853196902",
+    "project_id": "medicationmanager-e4619",
+    "storage_bucket": "medicationmanager-e4619.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:221037125239:android:81c4f141322fcf02",
+        "mobilesdk_app_id": "1:167853196902:android:fc2fbf2b86a10021e20fa7",
         "android_client_info": {
-          "package_name": "com.beliscosolutions.corneliouzbett.med_manager01"
+          "package_name": "com.corneliouzbett.medmanager"
         }
       },
       "oauth_client": [
         {
-          "client_id": "221037125239-dp88i25ldv9e1nvthit2q83fa98v7bg7.apps.googleusercontent.com",
-          "client_type": 3
-        },
-        {
-          "client_id": "221037125239-bprn8pqh627soeu2f9fe8uhqc1oh6a4i.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.beliscosolutions.corneliouzbett.med_manager01",
-            "certificate_hash": "9ade74dfef05d84b1bcfc36e5b9779682b436022"
-          }
-        },
-        {
-          "client_id": "221037125239-aig3vh8m7eaqmcitceomsr8u42klkl7u.apps.googleusercontent.com",
+          "client_id": "167853196902-tahc9bkj02ljjptj7btgcfci7mhsvos4.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyB_qWMdYTU7nNvu_RrVuEb8_GOAkyzAf5s"
+          "current_key": "AIzaSyCkrOeVG8vuhq-SDv7Q0Vf54hxOz1y2sLA"
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "221037125239-dp88i25ldv9e1nvthit2q83fa98v7bg7.apps.googleusercontent.com",
+              "client_id": "167853196902-tahc9bkj02ljjptj7btgcfci7mhsvos4.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
-        },
-        "ads_service": {
-          "status": 2
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:221037125239:android:d1f500963dfbf6d5",
-        "android_client_info": {
-          "package_name": "com.beliscosolutions.corneliouzbett.medmanager"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "221037125239-9pgtot82hgesbne63n7957mevdn9o2fi.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.beliscosolutions.corneliouzbett.medmanager",
-            "certificate_hash": "9ade74dfef05d84b1bcfc36e5b9779682b436022"
-          }
-        },
-        {
-          "client_id": "221037125239-dp88i25ldv9e1nvthit2q83fa98v7bg7.apps.googleusercontent.com",
-          "client_type": 3
-        },
-        {
-          "client_id": "221037125239-aig3vh8m7eaqmcitceomsr8u42klkl7u.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyB_qWMdYTU7nNvu_RrVuEb8_GOAkyzAf5s"
-        }
-      ],
-      "services": {
-        "analytics_service": {
-          "status": 1
-        },
-        "appinvite_service": {
-          "status": 2,
-          "other_platform_oauth_client": [
-            {
-              "client_id": "221037125239-dp88i25ldv9e1nvthit2q83fa98v7bg7.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        },
-        "ads_service": {
-          "status": 2
         }
       }
     }
