@@ -10,6 +10,6 @@
    ```bash
    git clone https://github.com/corneliouzbett/MedicationManager.git
    ```
-   * Import the project in android studied
+   * Import the project in android studio
 
 
