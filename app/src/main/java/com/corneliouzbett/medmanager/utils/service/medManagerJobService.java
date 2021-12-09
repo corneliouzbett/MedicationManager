@@ -11,12 +11,11 @@ import android.widget.Toast;
 
 public class medManagerJobService extends JobService {
 
-    MedicationJobExecutor medicationJobExecutor;
+    private MedicationJobExecutor medicationJobExecutor;
 
     @Override
     public boolean onStartJob(JobParameters params) {
         medicationJobExecutor = new MedicationJobExecutor() {
-            @SuppressLint("StaticFieldLeak")
             @Override
             protected void onPostExecute(String s) {
                 Toast.makeText(getApplicationContext(), "fdfdsdsds" + s, Toast.LENGTH_LONG).show();
